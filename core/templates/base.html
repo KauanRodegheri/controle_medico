@@ -14,9 +14,12 @@
             <ul>
                 <li><a href="{% url 'home_view' %}">Home</a></li>
                 <li><a href="{% url 'drug_createview' %}">Medicamentos</a></li>
+                {% if not user.is_authenticated %}
                 <li><a href="{% url 'register' %}">Registrar</a></li>
                 <li><a href="{% url 'login' %}">Login</a></li>
-                <li><a href="{% url 'logout' %}">Sair</a></li>
+                {% else %}
+                    <li><a href="{% url 'logout' %}">Sair</a></li>
+                {% endif %}
             </ul> 
         </aside>
         <main class="filhao">
@@ -33,13 +36,11 @@
 <style>
 
     body {
-        background-color: rgb(2, 4, 26);
-        color: white;
+        background-color: rgb(180, 180, 180);
     }
 
-    .titulo {
-        text-align: left;
-        color: white;
+    h1 {
+        text-align: center;
     }
 
     footer {
@@ -71,7 +72,7 @@
 .sidebar {
     width: 250px;
     height: 100vh;
-    background-color: #fd5000;
+    background-color: #333;
     color: white;
     padding: 15px;
     box-sizing: border-box;
