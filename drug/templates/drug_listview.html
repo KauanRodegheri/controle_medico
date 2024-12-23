@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% for drug in druglist %}
+    <p>{{drug.name}}</p>
+{% endfor %}
+
+
+{% endblock %}
