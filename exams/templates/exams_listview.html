@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<div class="grids">
+    <ul>
+    {% for exam in exams %}
+        <li>{{exam.day}}</li>
+        <ul>
+            <li><a href="{{exam.file.url}}" target="_blank">ARQUIVO</a></li>
+        </ul>
+    {% endfor %}
+    </ul>
+</div>
+<input type="button" value="Cadastrar Exames" onclick="location.href='{% url 'exams_createview' %}'">
+
+<style>
+    .grids {
+        padding: 20px;
+    }
+
+    .grids li a {
+        color: rgb(255, 255, 255);
+    }
+
+    .grids ul {
+        color: white;
+    }
+</style>
+{% endblock %}

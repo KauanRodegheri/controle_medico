@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>OLÁ {{user.username}}</h1>
+
+<div class="grids">
+    <ul>
+    {% for hour in horarios %}
+        <li><p>{{hour.hours}}</p></li>
+        <ul>
+        {% for drug in hour.drugs.all %}
+            <li><p>{{drug.name}}</p></li>
+        {% endfor %}
+        </ul>
+        {% endfor %}
+    </ul>
+</div>
+
+
+<input type="button" value="Cadastrar Horários" onclick="location.href='{% url 'hours_createview' %}'">
+
+<style>
+
+    input {
+        color: rgb(0, 42, 90);
+        background-color: orange;
+        border-radius: 5px 15px;
+        margin-left: 400px;
+    }
+
+    .grids h1 {
+        color: rgb(255, 255, 255);
+    }
+    .grids p {
+        color: rgb(255, 255, 255);
+    }
+
+    .grids ul {
+        color: orange;
+    }
+
+</style>
+{% endblock %}

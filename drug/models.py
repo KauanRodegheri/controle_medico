@@ -10,9 +10,13 @@ class Drug(models.Model):
     
 
 class Hours(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='horas', blank=True, null=True)
     hours = models.TimeField()
     drugs = models.ManyToManyField(Drug, related_name='drugs')
 
     def __str__(self):
         return str(self.hours)
+    
+    class Meta:
+        ordering = ['hours']
     

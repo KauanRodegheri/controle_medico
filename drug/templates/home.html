@@ -1,11 +1,17 @@
 {% extends 'base.html' %}
-<body>
-    <h1>OLA {{user}}</h1>
-</body>
 
+{% block content %}
+<div class="dashboard">
+    {% if user.is_authenticated %}
+        <h3><strong>Quantidade de remédios</strong></h3>
+        {{total_remedios}}
+    {% endif %}
+</div>
 <style>
-    h1 {
-        color: white;
-        margin-left: 500px;
+    .dashboard {
+        color: rgb(255, 255, 255);
+        padding: 40px;
     }
 </style>
+
+{% endblock %}

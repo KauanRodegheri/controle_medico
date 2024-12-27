@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="grids">
+    <ul>
+        {% for schedule in schedules %}
+            <li>{{schedule.specialist}} {% if schedule.hospital %}-{{schedule.hospital}}{%endif%}</li>
+            <li>{{schedule.day}}</li>
+        {% endfor %}
+    </ul>
+</div>
+
+<input type="button" value="Cadastrar Agendamento" onclick="location.href='{% url 'schedules_createview' %}'">
+
+{% endblock %}
