@@ -2,5 +2,17 @@ venv
 venv/
 *venv
 __pycache__/
-flake8
 media
+db.sqlite3
+*db.sqlite3
+### Django ###
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media
+
+atualizacao.txt
