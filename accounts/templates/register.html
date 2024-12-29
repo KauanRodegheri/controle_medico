@@ -4,8 +4,23 @@
 
 <form method="POST">
     {% csrf_token %}
-    {{register_form.as_p}}
-    <input type="submit">
+    <div class="username">
+        {{register_form.username.errors}}
+        <label>Nome de usuario</label>
+        {{register_form.username}}
+    </div>
+    <div class="password1">
+        {{register_form.password1.errors}}
+        <label>Senha</label>
+        {{register_form.password1}}
+    </div>
+    <div class="password2">
+        {{register_form.password2.errors}}
+        <label>Confirme a senha</label>
+        {{register_form.password2}}
+    </div>
+
+        <input type="submit">
 </form>
 
 {% endblock %}

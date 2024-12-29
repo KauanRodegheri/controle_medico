@@ -9,9 +9,9 @@ def schedules_create_view(request):
     if request.method == 'POST':
         schedules = SchedulesModelForm(request.POST)
         if schedules.is_valid():
-            schedules.save(commit=False)
-            schedules.user = request.user
-            schedules.save()
+            schedule = schedules.save(commit=False)
+            schedule.user = request.user
+            schedule.save()
             return redirect('schedules_listview')
     else:
         schedules = SchedulesModelForm()

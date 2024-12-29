@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form method="POST">
+    {% csrf_token %}
+    <h2>TEM CERTZA QUE DESEJA DELETAR O MEDICAMENTO {{object.name}}?</h2>
+    <input type="submit" value="DELETAR">
+    <input type="button" value="Cancelar" onclick="location.href='{% url 'drug_listview' %}'">
+</form>
+
+{% endblock %}

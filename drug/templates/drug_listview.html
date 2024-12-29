@@ -5,7 +5,8 @@
 {% for drug in druglist %}
     <ul>
 
-        <li><p>{{drug.name}}</p></li>
+        <li><p>{{drug.name}}</p> | <a href="{% url 'drug_deleteview' drug.id %}">Deletar</a></li>
+        <a href="{% url 'drug_updateview' drug.id %}">Atualizar</a>
     </ul>
 {% endfor %}
 

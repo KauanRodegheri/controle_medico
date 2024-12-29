@@ -5,12 +5,27 @@
 <div class="grids">
     <ul>
         {% for schedule in schedules %}
-            <li>{{schedule.specialist}} {% if schedule.hospital %}-{{schedule.hospital}}{%endif%}</li>
-            <li>{{schedule.day}}</li>
+            <li>{{schedule.specialist|upper}}</li>
+            <ul>
+                <li>{% if schedule.hospital %}Hospital: {{schedule.hospital}}{%endif%}</li>
+                <li>{{schedule.day}}</li>
+            </ul>
         {% endfor %}
     </ul>
 </div>
 
 <input type="button" value="Cadastrar Agendamento" onclick="location.href='{% url 'schedules_createview' %}'">
 
+<style>
+
+    .grids li {
+        color: white;
+    }
+
+    input {
+        background-color: orange;
+        color: rgb(0, 42, 90);
+        margin-left: 400px;
+    }
+</style>
 {% endblock %}

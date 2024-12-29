@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form method="POST">
+    {% csrf_token %}
+    {{schedules.as_p}}
+    <input type="submit" value="ENVIAR">
+</form>
+
+<style>
+    
+</style>
+
+{% endblock %}
