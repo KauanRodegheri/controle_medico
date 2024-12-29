@@ -6,6 +6,7 @@
     {% csrf_token %}
     {{drugs_forms.as_p}}
     <input type="submit" value="Atualizar">
+    <input type="button" value="Cancelar" onclick="location.href='{% url 'drug_listview' %}'">
 </form>
 
 

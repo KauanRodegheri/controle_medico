@@ -4,9 +4,11 @@
 
 {% for drug in druglist %}
     <ul>
-
-        <li><p>{{drug.name}}</p> | <a href="{% url 'drug_deleteview' drug.id %}">Deletar</a></li>
-        <a href="{% url 'drug_updateview' drug.id %}">Atualizar</a>
+        <li>
+            {{drug.name}}
+            <a href="{% url 'drug_deleteview' drug.id %}" class="delete-button">Deletar</a>
+            <a href="{% url 'drug_updateview' drug.id %}" class="update-button">Atualizar</a>
+        </li>
     </ul>
 {% endfor %}
 
@@ -14,10 +16,39 @@
 
 
 <style>
-    ul li p {
+    .update-button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 5px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+    }
+
+    .delete-button {
+        background-color: #f44336;
+        color: white;
+        padding: 5px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+    }
+
+    ul li{
         color: rgb(255, 255, 255);
         padding: 5px 15px;
     }
+
 
     input {
         background-color: orange;

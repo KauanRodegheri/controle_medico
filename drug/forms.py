@@ -14,9 +14,7 @@ class DrugModelForm(forms.ModelForm):
 
     
     def clean_name(self):
-        name = self.cleaned_data.get('name')
-        print(name)
-        print(self.user)
+        name = self.cleaned_data.get('name').title().strip()
         if Drug.objects.all().filter(user=self.user, name=name).exists():
             self.add_error('name', 'ja existe esse remedio no banco')
         else:
@@ -29,5 +27,11 @@ class HourModelForm(forms.ModelForm):
         model = Hours
         fields = ['hours', 'drugs']
         widgets = {
-            'hours': forms.TimeInput(format='%H:%M:%S', attrs={'type': 'time'})
+            'hours': forms.TimeInput(format='%H:%M:%S', attrs={'type': 'time'}),
         }
+    
+    def __init__(self, *args, **kwargs):
+        self.user = kwargs.pop('user', None)
+        super(HourModelForm, self).__init__(*args, **kwargs)
+        if self.user:
+            self.fields['drugs'].queryset = Drug.objects.all().filter(user=self.user)
