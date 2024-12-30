@@ -1,10 +1,14 @@
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, CreateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Drug, Hours
-from .forms import DrugModelForm, HourModelForm
 from django.urls import reverse_lazy
 from django.shortcuts import get_object_or_404
+from rest_framework.generics import ListAPIView
+from rest_framework.permissions import IsAuthenticated
+from .models import Drug, Hours
+from .forms import DrugModelForm, HourModelForm
+from .serializer import DrugModelSerializer
+from core.permissions import GlobalPermissions
 
 
 def home_view(request):
@@ -62,6 +66,12 @@ def drug_delete_view(request, pk):
             object.delete()
             return redirect('drug_listview')
     return render(request, 'drug_deleteview.html', {'object': object})
+
+
+class DrugListAPIView(ListAPIView):
+    queryset = Drug.objects.all()
+    serializer_class = DrugModelSerializer
+    permission_classes = [IsAuthenticated, GlobalPermissions]
 
 ## HORARIOS
 
